@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MovieCard from '../components/common/MovieCard';
 import useMovies from '../hooks/useMovies';
 import Pagination from '../components/common/Pagination';
+import { usePagination } from '../context/PaginationContext';
 
 const Home = () => {
+  const { page, setPage } = usePagination();
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [page, setPage] = useState<number>(1);
   const { movies, totalPages, loading } = useMovies(searchTerm, page);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +19,11 @@ const Home = () => {
       setPage(newPage);
     }
   };
+
+  useEffect(() => {
+    // Reset to first page when search term changes
+    setPage(1);
+  }, [searchTerm, setPage]);
 
   return (
     <div className="container mx-auto px-4">
@@ -46,11 +52,13 @@ const Home = () => {
               />
             ))}
           </div>
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
+          <div className="w-full overflow-x-auto">
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
         </>
       )}
     </div>

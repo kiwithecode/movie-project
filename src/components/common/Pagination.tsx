@@ -8,43 +8,65 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = [];
+  let startPage = Math.max(currentPage - 2, 1);
+  let endPage = Math.min(currentPage + 2, totalPages);
 
-  for (let i = 1; i <= totalPages; i++) {
-    if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
-      pageNumbers.push(i);
-    } else if (i === currentPage - 3 || i === currentPage + 3) {
-      pageNumbers.push('...');
-    }
+  if (currentPage <= 3) {
+    endPage = Math.min(5, totalPages);
+  }
+
+  if (currentPage > totalPages - 3) {
+    startPage = Math.max(totalPages - 4, 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
   }
 
   return (
-    <div className="flex items-center justify-center space-x-2 mt-4">
+    <div className="flex items-center justify-center space-x-1 mt-4 flex-wrap">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`px-4 py-2 ${currentPage === 1 ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-700'} rounded`}
+        className={`px-2 py-1 sm:px-3 sm:py-2 ${currentPage === 1 ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-700'} rounded m-1`}
       >
         Back
       </button>
-      {pageNumbers.map((number, index) =>
-        typeof number === 'string' ? (
-          <span key={index} className="px-4 py-2">
-            {number}
-          </span>
-        ) : (
+      {startPage > 1 && (
+        <>
           <button
-            key={index}
-            onClick={() => onPageChange(number)}
-            className={`px-4 py-2 ${number === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded`}
+            onClick={() => onPageChange(1)}
+            className={`px-2 py-1 sm:px-3 sm:py-2 ${1 === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
           >
-            {number}
+            1
           </button>
-        )
+          {startPage > 2 && <span className="px-2 py-1 sm:px-3 sm:py-2">...</span>}
+        </>
+      )}
+      {pageNumbers.map((number) => (
+        <button
+          key={number}
+          onClick={() => onPageChange(number)}
+          className={`px-2 py-1 sm:px-3 sm:py-2 ${number === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
+        >
+          {number}
+        </button>
+      ))}
+      {endPage < totalPages && (
+        <>
+          {endPage < totalPages - 1 && <span className="px-2 py-1 sm:px-3 sm:py-2">...</span>}
+          <button
+            onClick={() => onPageChange(totalPages)}
+            className={`px-2 py-1 sm:px-3 sm:py-2 ${totalPages === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
+          >
+            {totalPages}
+          </button>
+        </>
       )}
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`px-4 py-2 ${currentPage === totalPages ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-700'} rounded`}
+        className={`px-2 py-1 sm:px-3 sm:py-2 ${currentPage === totalPages ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-700'} rounded m-1`}
       >
         Next
       </button>
