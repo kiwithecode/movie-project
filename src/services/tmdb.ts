@@ -11,9 +11,18 @@ const tmdb = axios.create({
   },
 });
 
-export const getTopRatedMovies = async () => {
-  const response = await tmdb.get('/movie/top_rated?language=en-US&page=1');
-  return response.data.results;
+export const getTopRatedMovies = async (page = 1) => {
+  const response = await tmdb.get(`/movie/top_rated`, {
+    params: { language: 'en-US', page },
+  });
+  return response.data;
+};
+
+export const searchMovies = async (query: string, page = 1) => {
+  const response = await tmdb.get('/search/movie', {
+    params: { query, language: 'en-US', page },
+  });
+  return response.data;
 };
 
 export const getMovieDetails = async (id: string) => {
