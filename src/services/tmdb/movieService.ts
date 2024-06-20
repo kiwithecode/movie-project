@@ -16,6 +16,8 @@ export const searchMovies = async (query: string, page = 1): Promise<{ results: 
 };
 
 export const getMovieDetails = async (id: string): Promise<MovieDetails> => {
-  const response = await tmdb.get(`/movie/${id}`);
+  const response = await tmdb.get(`/movie/${id}`, {
+    params: { language: 'en-US', append_to_response: 'genres' },
+  });
   return response.data;
 };

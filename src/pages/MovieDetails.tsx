@@ -49,13 +49,22 @@ const MovieDetails = () => {
             />
             <div className="md:ml-8 bg-white dark:bg-gray-700 p-4 rounded-lg">
               <p className="mt-4 md:mt-0">
+                <strong>Original Title:</strong> {movie.original_title}
+              </p>
+              <p>
+                <strong>Language:</strong> {movie.original_language.toUpperCase()}
+              </p>
+              <p>
                 <strong>Release Date:</strong> {movie.release_date}
               </p>
               <p>
                 <strong>Genres:</strong> {movie.genres.map((genre) => genre.name).join(', ')}
               </p>
               <p>
-                <strong>Duration:</strong> {movie.runtime} minutes
+                <strong>Popularity:</strong> {movie.popularity}
+              </p>
+              <p>
+                <strong>Rating:</strong> {movie.vote_average} ({movie.vote_count} votes)
               </p>
               <p className="mt-4">{movie.overview}</p>
             </div>

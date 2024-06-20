@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import MovieCard from '../components/common/MovieCard';
 import useMovies from '../hooks/useMovies';
+import Pagination from '../components/common/Pagination';
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -12,12 +13,10 @@ const Home = () => {
     setPage(1); // Reset to first page on new search
   };
 
-  const handleNextPage = () => {
-    if (page < totalPages) setPage(page + 1);
-  };
-
-  const handlePrevPage = () => {
-    if (page > 1) setPage(page - 1);
+  const handlePageChange = (newPage: number) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setPage(newPage);
+    }
   };
 
   return (
@@ -32,6 +31,8 @@ const Home = () => {
       />
       {loading ? (
         <div>Loading...</div>
+      ) : movies.length === 0 ? (
+        <div>No results found for "{searchTerm}"</div>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -45,22 +46,11 @@ const Home = () => {
               />
             ))}
           </div>
-          <div className="flex justify-between mt-4">
-            <button
-              onClick={handlePrevPage}
-              disabled={page === 1}
-              className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <button
-              onClick={handleNextPage}
-              disabled={page === totalPages}
-              className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
     </div>
