@@ -56,7 +56,7 @@ const Home = () => {
         placeholder="Search for a movie..."
         value={searchTerm}
         onChange={handleSearchChange}
-        className="p-2 mb-4 border rounded w-full"
+        className="p-2 mb-4 border rounded w-full bg-white dark:bg-gray-700 dark:text-white"
       />
       {loading ? (
         <div>Loading...</div>
