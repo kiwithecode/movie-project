@@ -1,39 +1,11 @@
-import { useEffect, useState } from 'react';
-import MovieCard from '../components/MovieCard';
-import { getTopRatedMovies, searchMovies } from '../services/tmdb';
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-}
+import { useState } from 'react';
+import MovieCard from '../components/common/MovieCard';
+import useMovies from '../hooks/useMovies';
 
 const Home = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [page, setPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setLoading(true);
-      try {
-        const data = searchTerm
-          ? await searchMovies(searchTerm, page)
-          : await getTopRatedMovies(page);
-        setMovies(data.results);
-        setTotalPages(data.total_pages);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMovies();
-  }, [searchTerm, page]);
+  const { movies, totalPages, loading } = useMovies(searchTerm, page);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -68,8 +40,8 @@ const Home = () => {
                 key={movie.id}
                 id={movie.id}
                 title={movie.title}
-                posterPath={movie.poster_path}
-                rating={movie.vote_average}
+                poster_path={movie.poster_path}
+                vote_average={movie.vote_average}
               />
             ))}
           </div>

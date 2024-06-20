@@ -1,20 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails } from '../services/tmdb';
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  genres: { name: string }[];
-  runtime: number;
-  overview: string;
-}
+import { getMovieDetails } from '../services/tmdb/movieService';
+import { MovieDetails as MovieDetailsType } from '../types/movie';
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const [movie, setMovie] = useState<Movie | null>(null);
+  const [movie, setMovie] = useState<MovieDetailsType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
 
@@ -56,7 +47,7 @@ const MovieDetails = () => {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
             />
-            <div className="md:ml-8">
+            <div className="md:ml-8 bg-white dark:bg-gray-700 p-4 rounded-lg">
               <p className="mt-4 md:mt-0">
                 <strong>Release Date:</strong> {movie.release_date}
               </p>
