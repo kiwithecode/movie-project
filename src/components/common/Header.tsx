@@ -13,13 +13,13 @@ const Header = () => {
   };
 
   return (
-    <header className="p-4 flex justify-between items-center bg-gray-200 dark:bg-gray-900">
-      <h1 className="text-xl font-bold cursor-pointer" onClick={handleHomeClick}>
+    <header className="p-4 flex justify-between items-center bg-light-surface dark:bg-dark-surface">
+      <h1 className="text-xl font-bold cursor-pointer text-light-text dark:text-dark-text" onClick={handleHomeClick}>
         Movie App
       </h1>
       <button
         onClick={toggleTheme}
-        className="px-4 py-2 bg-blue-500 text-white rounded"
+        className="px-4 py-2 bg-light-accent text-light-background dark:bg-dark-accent dark:text-dark-text rounded"
       >
         Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode
       </button>

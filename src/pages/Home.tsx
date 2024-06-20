@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import MovieCard from '../components/common/MovieCard';
 import useMovies from '../hooks/useMovies';
 import Pagination from '../components/common/Pagination';
@@ -26,14 +26,14 @@ const Home = () => {
   }, [searchTerm, setPage]);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text">
       <h1 className="text-3xl font-bold my-8">Top Rated Movies</h1>
       <input
         type="text"
         placeholder="Search for a movie..."
         value={searchTerm}
         onChange={handleSearchChange}
-        className="p-2 mb-4 border rounded w-full bg-white dark:bg-gray-700 dark:text-white"
+        className="p-2 mb-4 border rounded w-full bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text"
       />
       {loading ? (
         <div>Loading...</div>

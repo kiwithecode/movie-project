@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../services/tmdb/movieService';
 import { MovieDetails as MovieDetailsType } from '../types/movie';
+import RatingStars from '../components/common/RatingStars';
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -64,7 +65,7 @@ const MovieDetails = () => {
                 <strong>Popularity:</strong> {movie.popularity}
               </p>
               <p>
-                <strong>Rating:</strong> {movie.vote_average} ({movie.vote_count} votes)
+                <strong>Rating:</strong> <RatingStars rating={movie.vote_average} /> ({movie.vote_count} votes)
               </p>
               <p className="mt-4">{movie.overview}</p>
             </div>

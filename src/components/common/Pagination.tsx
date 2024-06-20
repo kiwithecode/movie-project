@@ -28,7 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`px-2 py-1 sm:px-3 sm:py-2 ${currentPage === 1 ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-700'} rounded m-1`}
+        className={`px-2 py-1 sm:px-3 sm:py-2 ${currentPage === 1 ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-dark-accent text-dark-background hover:bg-dark-accent-dark'} rounded m-1`}
       >
         Back
       </button>
@@ -36,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
         <>
           <button
             onClick={() => onPageChange(1)}
-            className={`px-2 py-1 sm:px-3 sm:py-2 ${1 === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
+            className={`px-2 py-1 sm:px-3 sm:py-2 ${1 === currentPage ? 'bg-dark-accent text-dark-background' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
           >
             1
           </button>
@@ -47,7 +47,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
         <button
           key={number}
           onClick={() => onPageChange(number)}
-          className={`px-2 py-1 sm:px-3 sm:py-2 ${number === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
+          className={`px-2 py-1 sm:px-3 sm:py-2 ${number === currentPage ? 'bg-dark-accent text-dark-background' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
         >
           {number}
         </button>
@@ -57,7 +57,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
           {endPage < totalPages - 1 && <span className="px-2 py-1 sm:px-3 sm:py-2">...</span>}
           <button
             onClick={() => onPageChange(totalPages)}
-            className={`px-2 py-1 sm:px-3 sm:py-2 ${totalPages === currentPage ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
+            className={`px-2 py-1 sm:px-3 sm:py-2 ${totalPages === currentPage ? 'bg-dark-accent text-dark-background' : 'bg-gray-300 text-black hover:bg-gray-400'} rounded m-1`}
           >
             {totalPages}
           </button>
@@ -66,7 +66,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`px-2 py-1 sm:px-3 sm:py-2 ${currentPage === totalPages ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-700'} rounded m-1`}
+        className={`px-2 py-1 sm:px-3 sm:py-2 ${currentPage === totalPages ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-dark-accent text-dark-background hover:bg-dark-accent-dark'} rounded m-1`}
       >
         Next
       </button>
