@@ -2,19 +2,33 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../services/tmdb';
 
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  genres: { name: string }[];
+  runtime: number;
+  overview: string;
+}
+
 const MovieDetails = () => {
-  const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const { id } = useParams<{ id: string }>();
+  const [movie, setMovie] = useState<Movie | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const data = await getMovieDetails(id);
-        setMovie(data);
+        if (id) {
+          const data = await getMovieDetails(id);
+          setMovie(data);
+        } else {
+          throw new Error('Movie ID is undefined');
+        }
       } catch (error) {
-        setError(error.message);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -28,7 +42,7 @@ const MovieDetails = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {(error as Error).message}</div>;
   }
 
   return (

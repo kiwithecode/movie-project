@@ -1,8 +1,15 @@
 import useMovies from '../hooks/useMovies';
 import MovieCard from '../components/MovieCard';
 
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+}
+
 const Home = () => {
-  const movies = useMovies();
+  const movies: Movie[] = useMovies();
 
   return (
     <div className="container mx-auto px-4">
