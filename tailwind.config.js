@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class", // Esto habilita el modo oscuro basado en una clase
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -24,5 +24,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@iconify/tailwind')
+  ],
 };

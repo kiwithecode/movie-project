@@ -21,6 +21,9 @@ importers:
         specifier: ^6.23.1
         version: 6.23.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@iconify/tailwind':
+        specifier: ^1.1.1
+        version: 1.1.1
       '@types/react':
         specifier: ^18.2.66
         version: 18.3.3
@@ -348,6 +351,12 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@iconify/tailwind@1.1.1':
+    resolution: {integrity: sha512-4mmA//qjZigv7D4KlqcVSYTqfRIJzyts2/lSCAJfCL0rVMIE76+ifJnaE5jxCo1+nYGBF8FsFo0qFOs+sX4EnA==}
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1858,6 +1867,12 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@iconify/tailwind@1.1.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/types@2.0.0': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:

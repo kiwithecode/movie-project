@@ -1,5 +1,33 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.logo {
+  width: 200px;
+  height: auto;
+  max-height: 60px; /* Ajusta esta altura según sea necesario */
+}
 
+nav {
+  height: 60px; /* Asegura que el navbar tenga una altura fija */
+}
+
+.dot {
+  left: 1px;
+  top: 1px;
+  background-color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #e05527; /* Cambia el color según el tema */
+}
+
+input:checked ~ .block {
+  background-color: #white;
+}
