@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+# My Project Movie
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación de React utilizando Vite y TypeScript para mostrar información de películas utilizando la API de The Movie Database (TMDb).
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js
+- PNPM
 
-## Expanding the ESLint configuration
+## Configuración
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Variables de Entorno
 
-- Configure the top-level `parserOptions` property like this:
+Crea un archivo `.env` en la raíz del proyecto y añade tu clave de API de TMDb:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+VITE_API_KEY=tu_clave_de_api
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Iniciar el Proyecto de Forma Local
+
+1. Instalar dependencias:
+
+    ```bash
+    pnpm install
+    ```
+
+2. Iniciar el servidor de desarrollo:
+
+    ```bash
+    pnpm run dev
+    ```
+
+3. Abre tu navegador y ve a `http://localhost:5174`.
+
+## Scripts Disponibles
+
+- `pnpm run dev`: Inicia el servidor de desarrollo.
+- `pnpm run build`: Compila la aplicación para producción.
+- `pnpm run preview`: Previsualiza la aplicación compilada.
+
+## Estructura del Proyecto
+
