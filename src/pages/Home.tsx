@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import MovieCard from '../components/common/MovieCard';
-import useMovies from '../hooks/useMovies';
-import Pagination from '../components/common/Pagination';
-import { usePagination } from '../context/PaginationContext';
+import { useState, useEffect } from "react";
+import MovieCard from "../components/common/MovieCard";
+import useMovies from "../hooks/useMovies";
+import Pagination from "../components/common/Pagination";
+import { usePagination } from "../context/PaginationContext";
 
 const Home = () => {
   const { page, setPage } = usePagination();
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const { movies, totalPages, loading } = useMovies(searchTerm, page);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
-import { getTopRatedMovies, searchMovies } from '../services/tmdb/movieService';
-import { Movie } from '../types/movie';
+import { useEffect, useState } from "react";
+import { getTopRatedMovies, searchMovies } from "../services/tmdb/movieService";
+import { Movie } from "../types/movie";
 
-const useMovies = (searchTerm: string, page: number): { movies: Movie[], totalPages: number, loading: boolean } => {
+const useMovies = (
+  searchTerm: string,
+  page: number
+): { movies: Movie[]; totalPages: number; loading: boolean } => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);

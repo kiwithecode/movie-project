@@ -1,11 +1,13 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from "react";
 
 interface PaginationContextType {
   page: number;
   setPage: (page: number) => void;
 }
 
-const PaginationContext = createContext<PaginationContextType | undefined>(undefined);
+const PaginationContext = createContext<PaginationContextType | undefined>(
+  undefined
+);
 
 export const PaginationProvider = ({ children }: { children: ReactNode }) => {
   const [page, setPage] = useState<number>(1);
@@ -20,7 +22,7 @@ export const PaginationProvider = ({ children }: { children: ReactNode }) => {
 export const usePagination = () => {
   const context = useContext(PaginationContext);
   if (!context) {
-    throw new Error('usePagination must be used within a PaginationProvider');
+    throw new Error("usePagination must be used within a PaginationProvider");
   }
   return context;
 };
