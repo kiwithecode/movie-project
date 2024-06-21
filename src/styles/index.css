@@ -6,11 +6,11 @@
 .logo {
   width: 200px;
   height: auto;
-  max-height: 60px; /* Ajusta esta altura según sea necesario */
+  max-height: 60px; 
 }
 
 nav {
-  height: 60px; /* Asegura que el navbar tenga una altura fija */
+  height: 60px;
 }
 
 .dot {
@@ -25,7 +25,7 @@ nav {
 
 input:checked ~ .dot {
   transform: translateX(100%);
-  background-color: #e05527; /* Cambia el color según el tema */
+  background-color: #e05527; 
 }
 
 input:checked ~ .block {

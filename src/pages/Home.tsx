@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
-import MovieCard from "../components/common/MovieCard";
-import useMovies from "../hooks/useMovies";
-import Pagination from "../components/common/Pagination";
-import { usePagination } from "../context/PaginationContext";
+import React, { useState, useEffect } from 'react';
+import MovieCard from '../components/common/MovieCard';
+import useMovies from '../hooks/useMovies';
+import Pagination from '../components/common/Pagination';
+import { usePagination } from '../context/PaginationContext';
+import MovieModal from '../components/common/MovieModal';
+import { getMovieDetails } from '../services/tmdb/movieService';
+import { MovieDetails as MovieDetailsType } from '../types/movie';
 
 const Home = () => {
   const { page, setPage } = usePagination();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { movies, totalPages, loading } = useMovies(searchTerm, page);
+  const [selectedMovie, setSelectedMovie] = useState<MovieDetailsType | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [error, setError] = useState<unknown>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -20,10 +26,20 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    // Reset to first page when search term changes
-    setPage(1);
-  }, [searchTerm, setPage]);
+  const handleCardClick = async (movieId: number) => {
+    try {
+      const movieDetails = await getMovieDetails(movieId.toString());
+      setSelectedMovie(movieDetails);
+      setIsModalOpen(true);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedMovie(null);
+  };
 
   return (
     <div className="container mx-auto px-4 flex flex-col items-center">
@@ -49,6 +65,7 @@ const Home = () => {
                 title={movie.title}
                 poster_path={movie.poster_path}
                 vote_average={movie.vote_average}
+                onClick={() => handleCardClick(movie.id)}
               />
             ))}
           </div>
@@ -61,6 +78,12 @@ const Home = () => {
           </div>
         </>
       )}
+      <MovieModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        movie={selectedMovie}
+      />
+      {error && <div>Error: {(error as Error).message}</div>}
     </div>
   );
 };
