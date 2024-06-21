@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/movie/:id" element={<MovieDetails />} />
           </Routes>
         </main>
-        <Footer /> {/* Añade el Footer */}
+        <Footer />
       </div>
     </Router>
   );

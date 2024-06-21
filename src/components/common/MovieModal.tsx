@@ -21,7 +21,7 @@ const MovieModal: React.FC<MovieModalProps> = ({ isOpen, onRequestClose, movie }
       className="fixed inset-0 flex items-center justify-center p-4"
       overlayClassName="fixed inset-0 bg-black bg-opacity-75"
     >
-      <div className="bg-white dark:bg-dark-surface p-6 rounded-lg shadow-lg dark:shadow-custom-dark max-w-3xl w-full overflow-y-auto">
+      <div className="bg-white dark:bg-dark-surface p-6 rounded-lg shadow-lg dark:shadow-custom-dark max-w-full md:max-w-3xl w-full overflow-y-auto max-h-full md:max-h-3/4">
         <h2 className="text-3xl font-bold mb-4 text-center text-light-text dark:text-dark-text">{movie.title}</h2>
         <div className="flex flex-col md:flex-row">
           <img

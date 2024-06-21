@@ -25,3 +25,10 @@ export interface MovieDetails {
   backdrop_path: string;
   adult: boolean;
 }
+
+export interface IconLinkProps {
+  href: string;
+  lightIcon: string;
+  darkIcon: string;
+  altText: string;
+}

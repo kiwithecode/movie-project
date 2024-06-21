@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import MovieCard from '../components/common/MovieCard';
-import useMovies from '../hooks/useMovies';
-import Pagination from '../components/common/Pagination';
-import { usePagination } from '../context/PaginationContext';
-import MovieModal from '../components/common/MovieModal';
-import { getMovieDetails } from '../services/tmdb/movieService';
-import { MovieDetails as MovieDetailsType } from '../types/movie';
+import React, { useState, useEffect } from "react";
+import MovieCard from "../components/common/MovieCard";
+import useMovies from "../hooks/useMovies";
+import Pagination from "../components/common/Pagination";
+import { usePagination } from "../context/PaginationContext";
+import MovieModal from "../components/common/MovieModal";
+import { getMovieDetails } from "../services/tmdb/movieService";
+import { MovieDetails as MovieDetailsType } from "../types/movie";
 
 const Home = () => {
   const { page, setPage } = usePagination();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { movies, totalPages, loading } = useMovies(searchTerm, page);
-  const [selectedMovie, setSelectedMovie] = useState<MovieDetailsType | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<MovieDetailsType | null>(
+    null
+  );
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
 
