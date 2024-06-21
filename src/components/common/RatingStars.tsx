@@ -38,7 +38,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({ rating }) => {
             <path d="M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28L5.92 10.4l4.38-.38L12 6.1l1.71 3.92 4.38.38-3.32 2.99 1 4.28L12 15.4z"/>
           </svg>
         ))}
-      <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">{rating.toFixed(1)}</span>
+      <span className="ml-2 text-sm text-light-text dark:text-dark-text">{rating.toFixed(1)}</span>
     </div>
   );
 };

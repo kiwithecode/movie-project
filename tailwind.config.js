@@ -21,6 +21,9 @@ module.exports = {
           accent: '#FC6B01',
         },
       },
+      boxShadow: {
+        'custom-dark': '0 4px 6px -1px rgba(252, 107, 1, 0.7), 0 2px 4px -1px rgba(252, 107, 1, 0.06)',
+      },
     },
   },
   plugins: [],

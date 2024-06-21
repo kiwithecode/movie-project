@@ -19,7 +19,7 @@ const Header = () => {
       </h1>
       <button
         onClick={toggleTheme}
-        className="px-4 py-2 bg-light-accent text-light-background dark:bg-dark-accent dark:text-dark-text rounded"
+        className="px-4 py-2 bg-light-accent text-light-background dark:bg-dark-accent dark:text-dark-background rounded"
       >
         Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode
       </button>

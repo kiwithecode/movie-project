@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`min-h-screen ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      <div className={`min-h-screen ${theme === 'dark' ? 'bg-dark-background text-dark-text' : 'bg-light-background text-light-text'}`}>
         <Header />
         <main className="p-4">
           <Routes>
