@@ -31,3 +31,8 @@ input:checked ~ .dot {
 input:checked ~ .block {
   background-color: white;
 }
+
+.footer-icon {
+  width: 32px;
+  height: 32px;
+}
