@@ -5,7 +5,7 @@ interface RatingStarsProps {
 }
 
 const RatingStars: React.FC<RatingStarsProps> = ({ rating }) => {
-  const fullStars = Math.floor(rating / 2); // Convert the rating to a 5-star scale
+  const fullStars = Math.floor(rating / 2); 
   const halfStars = (rating / 2) % 1 >= 0.75 ? 1 : 0;
   const quarterStars = (rating / 2) % 1 >= 0.25 && (rating / 2) % 1 < 0.75 ? 1 : 0;
   const emptyStars = 5 - fullStars - halfStars - quarterStars;
