@@ -29,5 +29,5 @@ input:checked ~ .dot {
 }
 
 input:checked ~ .block {
-  background-color: #white;
+  background-color: white;
 }
