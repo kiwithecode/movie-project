@@ -72,15 +72,6 @@ Este proyecto es una aplicación de React utilizando Vite y TypeScript para most
     ```powershell
     choco install nodejs-lts pnpm
     ```
-
-## Configuración
-
-### Variables de Entorno
-
-Crea un archivo `.env` en la raíz del proyecto y añade tu clave de API de TMDb:
-
-
-
 ## Configuración
 
 ### Variables de Entorno
