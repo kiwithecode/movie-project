@@ -33,12 +33,15 @@ const Navbar: React.FC = () => {
           onClick={toggleTheme}
         ></span>
         <label htmlFor="toggle" className="relative inline-block w-10 ml-2">
+          <span id="theme-toggle-label" className="sr-only">Toggle dark mode</span>
           <input
             type="checkbox"
             id="toggle"
             checked={theme === "dark"}
             onChange={toggleTheme}
             className="sr-only"
+            aria-labelledby="theme-toggle-label"
+            title="Toggle between light and dark mode"
           />
           <div className="block bg-gray-600 w-10 h-6 rounded-full"></div>
           <div className="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform duration-200 ease-in-out"></div>

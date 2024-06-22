@@ -9,6 +9,7 @@ module.exports = {
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
+    project: './tsconfig.json',
     ecmaVersion: 2020,
     sourceType: "module",
     ecmaFeatures: {
@@ -22,6 +23,7 @@ module.exports = {
     },
   },
   rules: {
+    "react/react-in-jsx-scope": "off",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },

@@ -7,7 +7,6 @@ interface MovieCardProps extends Movie {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
-  id,
   title,
   poster_path,
   vote_average,

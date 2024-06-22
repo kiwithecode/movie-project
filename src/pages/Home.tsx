@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MovieCard from "../components/common/MovieCard";
 import useMovies from "../hooks/useMovies";
 import Pagination from "../components/common/Pagination";
@@ -7,7 +7,7 @@ import MovieModal from "../components/common/MovieModal";
 import { getMovieDetails } from "../services/tmdb/movieService";
 import { MovieDetails as MovieDetailsType } from "../types/movie";
 
-const Home = () => {
+const Home: React.FC = () => {
   const { page, setPage } = usePagination();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { movies, totalPages, loading } = useMovies(searchTerm, page);
@@ -15,7 +15,7 @@ const Home = () => {
     null
   );
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [error, setError] = useState<unknown>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -33,8 +33,9 @@ const Home = () => {
       const movieDetails = await getMovieDetails(movieId.toString());
       setSelectedMovie(movieDetails);
       setIsModalOpen(true);
+      setError(null); // Clear any previous error
     } catch (error) {
-      setError(error);
+      setError("Failed to fetch movie details. Please try again.");
     }
   };
 
@@ -80,12 +81,12 @@ const Home = () => {
           </div>
         </>
       )}
+      {error && <div className="text-red-500 mt-4">{error}</div>}
       <MovieModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         movie={selectedMovie}
       />
-      {error && <div>Error: {(error as Error).message}</div>}
     </div>
   );
 };
