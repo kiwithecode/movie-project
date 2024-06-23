@@ -1,13 +1,13 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import MovieDetails from "./pages/MovieDetails";
 import Navbar from "./components/common/Navbar";
-import Footer from "./components/common/Footer"; // Importa el Footer
+import Footer from "./components/common/Footer"; 
 import { useTheme } from "./context/ThemeContext";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
-  const { theme } = useTheme();
+  const { theme } = useTheme(); // Obtener el tema actual del contexto
 
   return (
     <Router>
@@ -22,10 +22,11 @@ const App = () => {
         <main className="p-4">
           <Routes>
             <Route path="/" element={<Home />} />
-            
+            {/* Puedes agregar más rutas aquí */}
           </Routes>
         </main>
         <Footer />
+        <ToastContainer />
       </div>
     </Router>
   );
