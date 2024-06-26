@@ -38,9 +38,7 @@ tmdb.interceptors.response.use(
       }
     } else if (error.request) {
       errorMessage = "No response received from the server.";
-    } else {
-      errorMessage = `Error in request setup: ${error.message}`;
-    }
+    } 
 
     toast.error(errorMessage);
 
