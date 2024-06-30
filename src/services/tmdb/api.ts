@@ -3,10 +3,10 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = import.meta.env.BASE_URL_API;
+
 
 export const tmdb = axios.create({
-  baseURL: BASE_URL,
+  baseURL: "https://api.themoviedb.org/3",
   headers: {
     accept: "application/json",
     Authorization: `Bearer ${API_KEY}`,
